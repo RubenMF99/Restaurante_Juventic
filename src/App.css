@@ -1,0 +1,266 @@
+
+.footer{
+    background-color: #DD2D4A;
+    overflow: hidden;
+}
+.j #container{
+    color:#880D1E;
+    margin-right: 40%;
+    margin-left: 60%;
+}
+.j{
+    background-color: #CBEEF3;
+}
+.fondolog{
+    
+        background-image: url(https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Header%2Fheader2-min.png?alt=media&token=7811d519-0995-45f7-98f0-78336d7c12fb);
+        background-position: center;
+        background-size: 100% 170%;
+        background-repeat: no-repeat;
+    
+}
+.log{
+    align-content: center;
+    text-align: center;
+}
+.selection2{
+    overflow: hidden;
+}
+.item{
+    color:#880D1E;
+    background-position: left;
+    background-size: cover;
+    margin: 8px;
+    width: 500px;
+    line-height: 30px;
+    padding: 30px;
+    float: left;
+    margin-right: 15%;
+}
+
+.todo{
+    font-family: Arial, Helvetica, sans-serifs;
+    font-size: 18px;
+   text-align: center;
+   
+}
+
+body{
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Header%2Fheader3.png?alt=media&token=a95ddf62-6f59-4677-9ab5-d646b6e46047);
+}
+.boton{
+    position: relative;
+    left: 50px;
+} 
+ .boton:hover{
+    background-color: #CBEEF3;
+    color: #880d1e;
+} 
+.FondoFest{
+    background-color: #F26A8D;
+}
+/*Login*/
+.contenedor-form {
+    padding: 5rem 3rem;
+    max-width: 500px;
+    width: 95%;
+    background-color: var(--blanco);
+    border-radius: 1rem;
+}
+.form-usuario {
+    height: 100vh;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.enlace-cuenta {
+    margin-top: 2rem;
+    display: block;
+    opacity: .7;
+  }
+.campo-form {
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+#footer {
+    background: #DD2D4A !important;
+}
+#footer h5{
+	padding-left: 10px;
+    border-left: 3px solid #eeeeee;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+    color:#ffffff;
+}
+#footer a {
+    color: #ffffff;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+#footer ul.social li{
+	padding: 3px 0;
+}
+#footer ul.social li a i {
+    margin-right: 5px;
+	font-size:25px;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}
+#footer ul.social li:hover a i {
+	font-size:30px;
+	margin-top:-10px;
+}
+#footer ul.social li a,
+#footer ul.quick-links li a{
+	color:#ffffff;
+}
+#footer ul.social li a:hover{
+	color:#eeeeee;
+}
+#footer ul.quick-links li{
+	padding: 3px 0;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}
+#footer ul.quick-links li:hover{
+	padding: 3px 0;
+	margin-left:5px;
+	font-weight:700;
+}
+#footer ul.quick-links li a i{
+	margin-right: 5px;
+}
+#footer ul.quick-links li:hover a i {
+    font-weight: 700;
+}
+
+@media (max-width:767px){
+	#footer h5 {
+    padding-left: 0;
+    border-left: transparent;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+}
+/*NOSOTROS*/
+.imag{
+    width: 400px;
+    height: 400px;
+}
+.card1{
+    background-color: #CBEEF3;
+}
+#testimonios {
+    background: #ecc5c5;
+    padding: 50px 0 30px 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.estiloTestimonios {
+    color: black;
+}
+H1{
+    margin: 30px 30px 30px 0px;
+    font-size: 60px;
+    font-weight: bold ;
+    position: relative;
+   
+  }
+  .historia{
+    color: #880D1E;
+  }
+  /* Estilo de los comentarios en Nosotros */
+.comentarios {
+    margin: 20px 0;   
+   }
+   
+.form_comentarios textarea {
+       width: 100%;
+       height: 84px;
+       max-width: 100%;
+       min-width: 100%;
+       max-height: 300px;
+       min-height: 84px;
+       padding: 10px;
+       line-height: 30px;
+       border: 1px solid #4b65d1;
+       margin-bottom: 20px;
+   }
+   
+.form_comentarios .btn {
+       background: #4b65d1;
+       border-radius: 0;
+       color: #fff;
+       margin-bottom: 20px;
+   }
+   
+.form_comentarios .btn:hover {
+       box-shadow: 0px 0px 9px rgba(0,0,0,.35);
+   }
+   
+.media {
+       border-top: 1px solid #bfbfbf;
+       padding-top: 20px;
+   }
+   
+.media img {
+       margin-right: 20px;
+   }
+   
+.media .nombre {
+       color: #4b65d1;
+       margin-bottom: 0;
+   }
+   
+.media .nombre span {
+       font-size: 12px;
+       color: #464646;
+       margin-left: 10px;
+   }
+   
+.media .comentario {
+       margin-top: 10px;
+   }
+   
+.media .botones {
+       margin-bottom: 10px;
+   }
+   
+.media .botones a {
+       color: #acacac;
+       font-size: 14px;
+       margin-left: 20px;
+}
+
+
+.Serv{
+    color: #880D1E;
+}
+.menu1{
+    align-content: center;
+    text-align: center;
+    color: #880D1E;
+}
+.juntmenu{
+    overflow: hidden;
+}
+.card2{
+    text-align: center;
+    color: #880D1E;
+}
+.card-text1{
+    font-weight: bold ;
+}
+.gmodal{
+    text-align: center;
+    color: #880D1E;
+    align-content: center;
+
+}

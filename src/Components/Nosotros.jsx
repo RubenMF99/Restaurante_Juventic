@@ -13,7 +13,7 @@ const Nosotros = () => {
 
     return ( 
       <Fragment>
-        <section id="historia">
+        <section className="historia">
               <div className="container mt-5">
                 <div className="row">
                   <div className="col-md-5">

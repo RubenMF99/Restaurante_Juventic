@@ -25,14 +25,7 @@ const Login = ()=>{
         }
         UpdateError(false);
     }
-    const Advertencia = ()=>{
-        swal({
-        title: "Todos los campos son obligatorios",
-        text: "Sal&Sal",
-        icon: "warning",
-        button: "Cerrar",
-        });
-    }
+   
     return (
         <div className="form-usuario">
             { error ? <p className="alert alert-danger text-center">Todos lo campos som obligatorios</p>: null }

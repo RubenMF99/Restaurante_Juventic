@@ -23,6 +23,7 @@ const Header = () => {
                         <Link to={'/menu'} className="nav-link">Menú</Link>
                         <Link to={'/servicios'} className="nav-link">Servicios</Link>
                         <Link to={'/contactenos'} className="nav-link">Contactanos</Link>
+                        <Link to={'/login'} className="btn btn-danger mr">Ingresar</Link>
                         </div>
                     </div>
                 </div>

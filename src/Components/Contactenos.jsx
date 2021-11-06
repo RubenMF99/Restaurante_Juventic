@@ -1,77 +1,186 @@
-import React from 'react';
-
+import React,{useState,useRef} from 'react';
+import emailjs from 'emailjs-com';
+import styled from '@emotion/styled';
+import swal from 'sweetalert';
+import {Link} from 'react-router-dom';
 const Contactenos = () => {
+
+    const [Error, UpdateError] = useState(false);
+    const [Contacto,UpdateContacto] = useState({
+        Asunto: "",
+        Nombre: "",
+        Email: "",
+        Servicio: "",
+        Comentario:"",
+      });
+      const Contenedor = styled.legend`
+      position: relative;
+      z-index: 0; 
+      display: inline-block;
+      width: auto;
+      left: 500px;
+      margin-bottom: 40px;
+      font-family: 'Work Sans', sans-serif;
+      &::before{
+         position: absolute;
+         content: '';
+         width: calc(120% );
+         display: block;
+         background-color:#F26A8D;
+         height: 40px;
+         z-index:-1;
+         left: -30px;
+         right: -30px;
+         transform: rotate(-1deg);
+         transition: transform .3s ease;
+      }
+      &:hover::before{
+           transform: rotate(2deg);
+     }
+   `;
+   const {Asunto,Nombre,Email,Servicio,Comentario} = Contacto;
+   const form = useRef();
+   const handleChangeSugerencia = (e) =>{
+       UpdateContacto({
+           ...Contacto,
+           [e.target.name]:e.target.value,
+       });
+   }
+  const SubmitForm = e =>{
+       e.preventDefault();
+       if(Asunto.trim()==='' || Nombre.trim()==='' ||  Email.trim()==='' || Servicio.trim()==='' || Comentario.trim()===''){
+         UpdateError(true);
+         return;
+     }
+          UpdateError(false);
+          emailjs.sendForm('service_y6b6bfd', 'template_46l7xzy', form.current, 'user_JKFfDcN7JbJqibJfdxE19').then((result) => {
+              success();
+          }, (error) => {
+             alert(error.message);
+              });
+              e.target.reset();
+            
+              UpdateContacto({
+                Asunto: "",
+                Nombre: "",
+                Email: "",
+                Servicio: "",
+                Comentario:"",
+              });
+   }
+
+   const success = ()=>{
+     swal({
+     title: "Perfecto Reserva Exitosa",
+     text: "Sal&Sal",
+     icon: "success",
+     button: "Cerrar",
+     });
+ }
+     const Advertencia = ()=>{
+         swal({
+         title: "Todos los campos son obligatorios",
+         text: "Sal&Sal",
+         icon: "warning",
+         button: "Cerrar",
+         });
+     }
     return ( 
 
-        <div class="container" id="contenido">
-            <div class="form" id="formulario">
-                <h1>CONTÁCTANOS</h1>
-                <form class="row g-3 needs-validation" novalidate>
-                    <div class="col-md-4">
-                    <label for="validationCustom01" class="form-label">Asunto</label>
-                    <input type="text" class="form-control" id="validationCustom01" value="" required/>
-                    <div class="valid-feedback">
-                        Luce bien!
-                    </div>
-                    </div>
-                    <div class="col-md-4">
-                    <label for="validationCustom02" class="form-label">Nombre Completo</label>
-                    <input type="text" class="form-control" id="validationCustom02" value="" required/>
-                    <div class="valid-feedback">
-                        Luce bien!
-                    </div>
-                    </div>
-                    <div class="col-md-4">
-                    <label for="validationCustomUsername" class="form-label">Email</label>
-                    <div class="input-group has-validation">
+        <div>
+        {Error ? Advertencia() :null}
+       <div className="container">
+           <div className="row">
+               <form 
+                ref={form} 
+                className ="col card text-dark bg-transparent mb-5 pt-5 pb-2"
+                onSubmit={SubmitForm}
+              >
+                   <fieldset>
+                       <Contenedor>Contactanos...</Contenedor>
+                       <div className="row">
+                       <div className="col-md-4">
+                               <div className="form-group">
+                                   <label className="m-4">Asunto</label>
+                                   <input 
+                                   type="text"
+                                   className="form-control"
+                                   name="Asunto"
+                                   placeholder="Asunto"
+                                   onChange={handleChangeSugerencia}
+                                   value={Asunto}
+                                   />
+                               </div>
+                           </div>
+                           <div className="col-md-4">
+                               <div className="form-group">
+                                   <label className="m-4">Nombre</label>
+                                   <input 
+                                   type="text"
+                                   className="form-control"
+                                   name="Nombre"
+                                   placeholder="Nombre"
+                                   onChange={handleChangeSugerencia}
+                                   value={Nombre}
+                                   />
+                               </div>
+                           </div>
+                           <div className="col-md-4">
+                           <div className="form-group">
+                                   <label htmlFor="email" className="m-4">Email</label>
+                                   <input 
+                                   type="email"
+                                   className="form-control"
+                                   name="Email"
+                                   placeholder="Tu Email"
+                                   onChange={handleChangeSugerencia}
+                                   value={Email}
+                                   />
+                               </div>
+                           </div>
+                           <div className="col-md-4">
+                           <div className="form-group">
+                           <label htmlFor="exampleFormControlSelect1" className="m-4">Seleccione servicio</label>
+                            <select 
+                            className="form-control" 
+                            onChange={handleChangeSugerencia}
+                            value={Servicio}
+                            name="Servicio"
+                            >
+                            <option selected disabled value="">....Selecciona...</option>
+                                <option>Celebracion de cumpleaños</option>
+                                <option>Aniversario</option>
+                                <option>Fiesta infantil</option>
+                                <option>Declaracion o propuesta</option>
+                                <option>Despedida</option>
+                                <option>Cena con amigos</option>
+                            </select>
+                               </div>
+                           </div>
+                           
+                            <div className="col-md-8">
+                            <div className="form-group">
+                                    <label className="m-4">Comentario o Sugerencia</label>
+                                    <textarea 
+                                    onChange={handleChangeSugerencia}
+                                    value={Comentario}
+                                     className="form-control " 
+                                     placeholder="Ingresa Comentario o sugerencia" 
+                                     name="Comentario"
+                                    ></textarea>
+               
+                                </div>
+                            </div>
+                 </div>
+                         <Link to={'/'} className='btn btn-danger m-4 '>Volver</Link>
+                        <button type="submit" className=" btn  btn-primary m-4" >Enviar</button>
+                   </fieldset>
 
-                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required/>
-                        <div class="invalid-feedback">
-                        Ingresa un correo valido.
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-md-3">
-                    <label for="validationCustom04" class="form-label">Servicio</label>
-                    <select class="form-select" id="validationCustom04" required>
-                        <option selected disabled value="">Selecciona...</option>
-                        <option>...</option>
-                        <option>Celebracion de cumpleaños</option>
-                        <option>Aniversario</option>
-                        <option>Fiesta infantil</option>
-                        <option>Declaracion o propuesta</option>
-                        <option>Despedida</option>
-                        <option>Cena con amigos</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Selecciona un servicio.
-                    </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="validationTextarea" class="form-label">Comentario</label>
-                        <textarea class="form-control" id="validationTextarea" placeholder="Ingresa tu comentario aqui" required></textarea>
-                        <div class="invalid-feedback">
-                            Por favor ingresa un comentario.
-                        </div>
-                    </div>
-                    <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required/>
-                        <label class="form-check-label" for="invalidCheck">
-                        Acepto los terminos y condiciones
-                        </label>
-                        <div class="invalid-feedback">
-                        Debes aceptar los terminos y condiciones.
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-mb-12">
-                    <button className="btn btn-primary mt-4 mb-5" id="enviar" type="submit">Enviar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
+               </form>
+           </div>
+       </div>
+   </div>
+    
      );
 }
  

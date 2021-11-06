@@ -18,8 +18,8 @@ const Productos = ({MuestraMenuRes,setcarrocompra,carrocompra}) => {
         <img src={MuestraMenuRes.url} className="card-img-top img-responsive center-d-inline-block"/>
         
         <div className="card-body">
-          <p className="card-text">{MuestraMenuRes.nombre}</p>
-          <p className="card-text">{MuestraMenuRes.descripcion}</p>
+          <p className="card-text">Nombre: {MuestraMenuRes.nombre}</p>
+          <p className="card-text"> Precio: {MuestraMenuRes.precio}</p>
         </div>
 
         <div className="card-footer">
@@ -29,7 +29,7 @@ const Productos = ({MuestraMenuRes,setcarrocompra,carrocompra}) => {
          </Button>
         <Modal isOpen={isOpen}>
           <ModalHeader>
-            Encabezado
+          <Label>{MuestraMenuRes.nombre}</Label> 
           </ModalHeader>
           <ModalBody>
             <FormGroup>  
@@ -38,7 +38,6 @@ const Productos = ({MuestraMenuRes,setcarrocompra,carrocompra}) => {
                   </div>
             </FormGroup>
             <FormGroup>
-            <Label>{MuestraMenuRes.nombre}</Label> 
             {MuestraMenuRes.descripcion}
             </FormGroup>
           </ModalBody>

@@ -64,6 +64,17 @@ const Reserva = () => {
                 alert(error.message);
                  });
                  e.target.reset();
+                 //Limpimos el formulario
+                 UpdateReserva({
+                    Nombre: "",
+                    Telefono: "",
+                    Email: "",
+                    Servicio: "",
+                    NumPer: "",
+                    Fecha:"",
+                    Hora:"",
+                    Indicaciones:"",
+                  });
       }
     
       

@@ -12,6 +12,16 @@ const Menu = () => {
     const CloseModal = () => {
       setisOpen(false);
     };
+    const vaciar = () =>{
+        setcarrocompra([]);
+    }
+    var id;
+    const eliminarPlato = ()=>{
+        let auxi = carrocompra.findIndex(indice =>{
+            return indice.id === id;
+        });
+        carrocompra.splice(auxi,1);
+    }
     return  (
         <div className="container">
 
@@ -27,30 +37,44 @@ const Menu = () => {
                         <ModalBody>
                             <FormGroup>  
                             <div className="col-10 justify-content-center row">
-                                {carrocompra.map((e)=>(
-                                    e.url
+                                {
+                               carrocompra.length===0
+                               ?
+                                 <p className="text-center blockquote">No hay elementos</p>
+                               : 
+                                carrocompra.map(plato =>(
+                                    <div>
+                                   <table  className="table">
+                                  <thead>
+                                      <tr>
+                                          <th><img src={plato.url} height="70px" width="70px"></img> </th>
+                                          <th><p> Nombre: <br/> {plato.nombre}</p></th>
+                                          <th><p> Precio:<br/> {plato.precio}</p></th>
+                                          <th><Button onClick={eliminarPlato}>X</Button></th>  
+                                      </tr>
+                                  </thead>
+                                  <tbody></tbody>
+                              </table>
+                              </div>
                                 ))}
                                 </div>
                             </FormGroup>
-                            <FormGroup>
-                            <Label><p>Hola</p></Label> 
-                            <p>Hola</p>
-                            </FormGroup>
                         </ModalBody>
                         <ModalFooter>
-                        <Button className="btn-danger"onClick={CloseModal}>
+                        <Button className="btn-primary"onClick={CloseModal}>
                             Cerrar
                         </Button >
-                        <Link to={'/compras'} className='btn btn-danger m-4 '>Volver</Link>
+                        <Button className="btn-danger"onClick={vaciar}>
+                            Vaciar Carrito
+                        </Button >
+                        <Link to={'/compras'} className='btn btn-success m-4 '>Comprar</Link>
                         </ModalFooter>
                         </Modal>
                 </div>
 
                 <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button  className="Tipbutton btn btn-primary m-4">Menú descargable</button>
-                    <Button  className="btn btn-success m-4" onClick={showModal}>
-                             Carrito
-                    </Button>
+                    <img  src="https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Logos%2Fcart-regular-24.png?alt=media&token=8f7226e1-cb3d-487f-9575-09f7a686a453"className="m-4" onClick={showModal}></img>
                 </div>
 
                 <h3 className="Titencabezado">Realiza pedidos en Línea</h3>
@@ -58,8 +82,8 @@ const Menu = () => {
                 <div className="Productall col-12 p-5 m-5 row">
                     {DateService.MuestraMenuRes.map((e)=>(
                         <Productos 
+                             carrocompra={carrocompra}
                             setcarrocompra={setcarrocompra}
-                            carrocompra={carrocompra}
                             MuestraMenuRes={e} key={e.id}/>   
                     ))}
                 </div>       

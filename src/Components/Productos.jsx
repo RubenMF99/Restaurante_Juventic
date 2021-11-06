@@ -9,9 +9,12 @@ const Productos = ({MuestraMenuRes,setcarrocompra,carrocompra}) => {
     setisOpen(false);
   };
  const AgregarProducto = ()=>{
-  // const plato = carrocompra.filter(plato=>plato.id === MuestraMenuRes.id);
-      setcarrocompra([...carrocompra,...MuestraMenuRes]);
+      const aux = carrocompra.find(e=> e.id ===MuestraMenuRes.id);
+      if(aux) return;
+      setcarrocompra([...carrocompra,MuestraMenuRes]);
+     
  }
+ 
 
     return (  
       <div className="card col-md-5 m-lg-4">
@@ -45,7 +48,7 @@ const Productos = ({MuestraMenuRes,setcarrocompra,carrocompra}) => {
           <Button className="btn-danger"onClick={CloseModal}>
              Cerrar
          </Button >
-          <Button onClick={AgregarProducto} className='btn btn-success m-4'>Agregar al carrito</Button>
+          <Button onClick={AgregarProducto()} className='btn btn-success m-4'>Agregar al carrito</Button>
           </ModalFooter>
         </Modal>
         </>

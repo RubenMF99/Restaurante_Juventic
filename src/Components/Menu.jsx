@@ -16,9 +16,10 @@ const Menu = () => {
         <div className="container">
 
             <div className="row justify-content-center">
-                <h2 className="mt-5 mb-5 m-lg-5 col-md-9 display-3">Animate a probar nuestros platillos</h2>
+                <h2 className="titulomenu mt-5 mb-5 m-lg-5 col-md-9 display-2">Animate a probar nuestros platillos</h2>
                 <div className="col-md-12 mb-5">
-                    <p className="text-justify-content-center blockquote">Tenemos gran variedad de platos para todos los gustos</p>
+                    <p className="titulomenu text-justify-content-center blockquote">Tenemos gran variedad de platos para todos los gustos</p>
+                       
                         <Modal isOpen={isOpen}>
                         <ModalHeader>
                             Platillos
@@ -46,15 +47,15 @@ const Menu = () => {
                 </div>
 
                 <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button  className="btn btn-danger m-4">Menu descargable</button>
+                    <button  className="Tipbutton btn btn-primary m-4">Menú descargable</button>
                     <Button  className="btn btn-success m-4" onClick={showModal}>
                              Carrito
                     </Button>
                 </div>
 
-                <h2 className="encabezado">Realiza pedidos en Linea</h2>
+                <h3 className="Titencabezado">Realiza pedidos en Línea</h3>
 
-                <div className="col-12 p-5 m-5 row">
+                <div className="Productall col-12 p-5 m-5 row">
                     {DateService.MuestraMenuRes.map((e)=>(
                         <Productos 
                             setcarrocompra={setcarrocompra}

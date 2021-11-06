@@ -22,7 +22,7 @@ const Productos = ({MuestraMenuRes,setcarrocompra,carrocompra}) => {
           <p className="card-text">{MuestraMenuRes.descripcion}</p>
         </div>
 
-        <div className="card-footer">
+        <div className="Productall card-footer">
          <>
          <Button className="btn btn-success" onClick={showModal}>
              Ver Plato

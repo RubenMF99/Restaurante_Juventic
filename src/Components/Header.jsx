@@ -15,7 +15,7 @@ const Header = () => {
                     <span className="navbar-toggler-icon"></span>
                   </button>
                   
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div className="ColorLink collapse navbar-collapse" id="navbarNavAltMarkup">
                     
                         <div class="navbar-nav " >
                         <Link to={'/'} className="nav-link">Inicio</Link>

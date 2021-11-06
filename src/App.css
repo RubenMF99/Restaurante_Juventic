@@ -48,14 +48,7 @@
 body{
     background-image: url(https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Header%2Fheader3.png?alt=media&token=a95ddf62-6f59-4677-9ab5-d646b6e46047);
 }
-.boton{
-    position: relative;
-    left: 50px;
-} 
- .boton:hover{
-    background-color: #CBEEF3;
-    color: #880d1e;
-} 
+
 .FondoFest{
     background-color: #F26A8D;
 }
@@ -153,9 +146,7 @@ body{
     width: 400px;
     height: 400px;
 }
-.card1{
-    background-color: #CBEEF3;
-}
+
 #testimonios {
     background: #ecc5c5;
     padding: 50px 0 30px 0;
@@ -175,6 +166,15 @@ H1{
   }
   .historia{
     color: #880D1E;
+  }
+  .titulomenu{
+    color: #142E4F;
+    text-align: center;
+
+  }
+  .Titencabezado{
+      text-align: center;
+      font-weight: bold ;
   }
   /* Estilo de los comentarios en Nosotros */
 .comentarios {
@@ -263,4 +263,17 @@ H1{
     color: #880D1E;
     align-content: center;
 
+}
+.CardMenu1{
+    align-content: center;
+    text-align: center;
+}
+.TitulCard{
+    font-size: 20px;
+    font-weight: bold ;
+}
+.Productall{
+    align-content: center;
+    text-align: center;
+    color: #142E4F;
 }

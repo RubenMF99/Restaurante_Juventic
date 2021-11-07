@@ -161,131 +161,34 @@ const Inicio = () => {
         </div>
       </div>
 
-      <section id="comentarios">
-        <div
-          id="carouselExampleDark"
-          className="carousel carousel-dark slide"
-          data-bs-ride="carousel"
-        >
-          <div className="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#carouselExampleDark"
-              data-bs-slide-to="0"
-              className="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleDark"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleDark"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
-          </div>
+      <div class="comentarios">
+        <Carousel fade>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Nosotros%2F1.png?alt=media&token=e448d564-ce17-4e33-a569-bc3fd05c0508"
+              alt="First slide"
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Nosotros%2F2.png?alt=media&token=3288e248-6605-48f6-8516-33fb86024085"
+              alt="Second slide"
+            />
 
-          <div className="carousel-inner">
-            <div className="carousel-item active text-center">
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Nosotros%2FSlider-Testimonios1.jpg?alt=media&token=68304f61-ca96-4f7b-8367-609e1e412a29"
-                className="d-block w-100"
-                alt="First Slide"
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <div className="col-md-2 ml-5 mt-1 mb-5">
-                  <div className="mx-auto d-block">
-                    <img
-                      src="https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Nosotros%2Fpersonal1%402x.png?alt=media&token=e858db3c-a779-4bc5-9b4d-5e0892512efb"
-                      className="card-img-top rounded-circle"
-                      width="100%"
-                      height="130px"
-                      alt=""
-                    />
-                  </div>
-                </div>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Nosotros%2F3.png?alt=media&token=141a1c32-a524-47f0-a24c-a914065d864f"
+              alt="Third slide"
+            />
 
-                <div className="container-item">
-                  <div className="estiloTestimonios">
-                    <figure className="text-center">
-                      <blockquote className="blockquote">
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Atque ducimus quas temporibus ad id eius soluta
-                          suscipit nemo, laborum ut natus a eum mollitia maiores
-                          excepturi explicabo, quis praesentium, eaque iure
-                          error provident tempora. Itaque dolor quam pariatur
-                          natus optio.
-                        </p>
-                      </blockquote>
-                      <figcaption className="blockquote-footer">
-                        <cite title="Source Title">Angela</cite>
-                      </figcaption>
-                    </figure>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </Carousel.Item>
+        </Carousel>
+      </div>
 
-            <div className="carousel-item" data-bs-interval="2000">
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Nosotros%2FSlider-Testimonios1.jpg?alt=media&token=68304f61-ca96-4f7b-8367-609e1e412a29"
-                className="d-block w-100"
-                alt="..."
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>
-                  Some representative placeholder content for the second slide.
-                </p>
-              </div>
-            </div>
-
-            <div className="carousel-item">
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Nosotros%2Fpersonal1%402x.png?alt=media&token=e858db3c-a779-4bc5-9b4d-5e0892512efb"
-                className="d-block w-100"
-                alt="..."
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>
-                  Some representative placeholder content for the third slide.
-                </p>
-              </div>
-            </div>
-          </div>
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleDark"
-            data-bs-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleDark"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
-      </section>
     </div>
   );
 };

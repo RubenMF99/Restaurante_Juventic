@@ -48,29 +48,37 @@ const Menu = () => {
                         <table className="table">
                           <thead>
                             <tr>
-                              <th>
+                              <th >
                                 <img
                                   src={plato.url}
                                   alt="plato_foto"
                                   height="70px"
                                   width="70px"
+                                  className="mr"
                                 ></img>{" "}
                               </th>
-                              <th>
-                                <p>
+                              <th >
+                                <p className="mr">
                                   {" "}
                                   Nombre: <br /> {plato.nombre}
                                 </p>
                               </th>
-                              <th>
-                                <p>
+                              <th >
+                                <p
+                                className="mr"
+                                >
                                   {" "}
                                   Precio:
                                   <br /> {plato.precio}
                                 </p>
                               </th>
+                              <th >
+                              {" "}
+                                  Cantidad:
+                                <input type="number" ></input>
+                              </th>
                               <th>
-                                <Button onClick={() => eliminarPlato(plato)}>
+                                <Button className="ml" onClick={() => eliminarPlato(plato)}>
                                   X
                                 </Button>
                               </th>
@@ -85,7 +93,7 @@ const Menu = () => {
               </FormGroup>
             </ModalBody>
             <ModalFooter>
-              <Button className="btn-primary" onClick={() => setisOpen(false)}>
+              <Button className="btn btn-primary" onClick={() => setisOpen(false)}>
                 Cerrar
               </Button>
               <Button className="btn-danger" onClick={() => setcarrocompra([])}>
@@ -99,9 +107,6 @@ const Menu = () => {
         </div>
 
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button className="Tipbutton btn btn-primary m-4">
-            Menú descargable
-          </button>
           <img
             src="https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Logos%2Fcart-regular-24.png?alt=media&token=8f7226e1-cb3d-487f-9575-09f7a686a453"
             alt="coso"

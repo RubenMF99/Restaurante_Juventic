@@ -138,6 +138,10 @@ body{
 .mr{
     margin-left: 50px !important;
 }
+.ml{
+    margin-left: 25px !important;
+    margin-bottom: 25px !important;
+}
 @media (max-width:767px){
 	#footer h5 {
     padding-left: 0;
@@ -243,8 +247,6 @@ H1{
        font-size: 14px;
        margin-left: 20px;
 }
-
-
 .Serv{
     color: #880D1E;
 }

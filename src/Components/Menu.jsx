@@ -108,11 +108,15 @@ const Menu = () => {
 
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
           <img
-            src="https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Logos%2Fcart-regular-24.png?alt=media&token=8f7226e1-cb3d-487f-9575-09f7a686a453"
+            src="https://firebasestorage.googleapis.com/v0/b/restaurante-fe3ed.appspot.com/o/Logos%2Fcarrito.png?alt=media&token=ec551e7d-5049-44f4-a851-51430b25ba9f"
             alt="coso"
-            className="m-4"
+            height="70" widht="70"
+            className="m-1"
             onClick={() => setisOpen(true)}
           ></img>
+          <button className="Tipbutton btn btn-primary m-1" s>
+            Menú descargable
+          </button>
         </div>
 
         <h3 className="Titencabezado">Realiza pedidos en Línea</h3>

@@ -6,7 +6,6 @@ import Servicios from "./Components/Servicios";
 import Reserva from "./Components/Reserva";
 import Contactenos from "./Components/Contactenos";
 import Nosotros from "./Components/Nosotros";
-import Compras from "./Components/Compras";
 import Footer from "./Components/Footer";
 import Inicio from "./Components/Inicio";
 import Login from "./Components/sesion/login";
@@ -24,7 +23,6 @@ function App() {
         <Route exact path="/servicios/reserva" component={Reserva} />
         <Route exact path="/contactenos" component={Contactenos} />
         <Route exact path="/nosotros" component={Nosotros} />
-        <Route exact path="/compras" component={Compras} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
       </Switch>

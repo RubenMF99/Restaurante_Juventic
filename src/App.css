@@ -138,6 +138,9 @@ body{
 .mr{
     margin-left: 50px !important;
 }
+.mi{
+    margin-left: 1px !important;
+}
 .ml{
     margin-left: 25px !important;
     margin-bottom: 25px !important;

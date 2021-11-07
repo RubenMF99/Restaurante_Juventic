@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DateService from "../utils/datos.json";
 import Productos from "./Productos";
+import emailjs from "emailjs-com";
+import swal from "sweetalert";
 import {
   Button,
   Modal,
@@ -8,21 +10,55 @@ import {
   ModalBody,
   ModalFooter,
   FormGroup,
+  Label
 } from "reactstrap";
-import { Link } from "react-router-dom";
+
 const Menu = () => {
   const [carrocompra, setcarrocompra] = useState([]);
   const [isOpen, setisOpen] = useState(false);
-
+  const [compra,setcompra] = useState({
+    Cantidad :'',
+    email:''
+  });
+  emailjs.init("user_goyf5NOpfzueBGtIc5ZUd");
+  const [totalcom,setTotal] = ('');
+  const {Cantidad,email} = compra;
   const eliminarPlato = (plato) => {
     let aux = carrocompra.filter(e => e.id !== plato.id);
-
     setcarrocompra(aux);
   };
-
-  useEffect(() => {
-    console.log(carrocompra);
-  }, [carrocompra]);
+  const handleChangeCompra = e =>{
+    setcompra({
+      ...compra,
+      [e.target.name]: e.target.value,
+    });
+  }
+  const sendEmail = () =>{
+    let lista,total;
+    carrocompra.map(e =>{
+       lista = `${e.nombre} --- `;
+       total+= (e.precio*Cantidad)
+    }
+    );
+    setTotal(total);
+      var tempParams = {
+        Email: "fghjk",
+        platos: "dgfhjk",
+        cantidad:"dfghhjnmk",
+        Total:"dfghj",
+    };
+      emailjs.send("service_c88o4k5","template_ed7jz7h", tempParams).then(function (res) {
+        success();
+    })
+  }
+  const success = () => {
+    swal({
+      title: "Perfecto Reserva Exitosa",
+      text: "Sal&Sal",
+      icon: "success",
+      button: "Cerrar",
+    });
+  };
 
   return (
     <div className="container">
@@ -58,27 +94,33 @@ const Menu = () => {
                                 ></img>{" "}
                               </th>
                               <th >
-                                <p className="mr">
+                                <p >
                                   {" "}
                                   Nombre: <br /> {plato.nombre}
                                 </p>
                               </th>
                               <th >
                                 <p
-                                className="mr"
                                 >
                                   {" "}
                                   Precio:
                                   <br /> {plato.precio}
                                 </p>
                               </th>
-                              <th >
-                              {" "}
-                                  Cantidad:
-                                <input type="number" ></input>
+                              <th  >
+                              <p className="mb-1"> {" "}
+                                  Cantidad: </p> 
+                                  <div className="col-md-12 mi mb-1 row">
+                                   <input
+                                    type="number"
+                                    name ="Cantidad"
+                                    value={Cantidad}
+                                    onChange={handleChangeCompra}
+                                     ></input>
+                                   </div>
                               </th>
                               <th>
-                                <Button className="ml" onClick={() => eliminarPlato(plato)}>
+                                <Button  onClick={() => eliminarPlato(plato)}>
                                   X
                                 </Button>
                               </th>
@@ -91,6 +133,16 @@ const Menu = () => {
                   )}
                 </div>
               </FormGroup>
+              <FormGroup>
+                <Label>Correo Electronico</Label>
+                <input
+                      type="email"
+                      className="form-control"
+                      name="email"
+                      placeholder="Tu Email"
+                      
+                    />
+              </FormGroup>
             </ModalBody>
             <ModalFooter>
               <Button className="btn btn-primary" onClick={() => setisOpen(false)}>
@@ -98,10 +150,10 @@ const Menu = () => {
               </Button>
               <Button className="btn-danger" onClick={() => setcarrocompra([])}>
                 Vaciar Carrito
+              </Button >
+              <Button  className ="btn-success" onClick={() => sendEmail}>
+              Comprar
               </Button>
-              <Link to={"/compras"} className="btn btn-success m-4 ">
-                Comprar
-              </Link>
             </ModalFooter>
           </Modal>
         </div>

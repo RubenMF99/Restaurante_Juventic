@@ -19,7 +19,7 @@ const Productos = ({ MuestraMenuRes, setcarrocompra, carrocompra }) => {
   return (
     <div className="card col-md-5 m-lg-4">
       <img
-        src={MuestraMenuRes.url}
+        src={MuestraMenuRes.imagen}
         alt="foto-plato"
         className="card-img-top img-responsive center-d-inline-block"
       />
@@ -42,7 +42,7 @@ const Productos = ({ MuestraMenuRes, setcarrocompra, carrocompra }) => {
               <FormGroup>
                 <div className="gmodal justify-content-center row">
                   <img
-                    src={MuestraMenuRes.url}
+                    src={MuestraMenuRes.imagen}
                     alt="foto-plato"
                     className="center-d-inline-block "
                   />

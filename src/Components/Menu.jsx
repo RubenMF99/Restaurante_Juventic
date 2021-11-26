@@ -1,5 +1,4 @@
 import React, { useState,useEffect} from "react";
-import DateService from "../utils/datos.json";
 import Productos from "./Productos";
 import emailjs from "emailjs-com";
 import swal from "sweetalert";
@@ -64,8 +63,8 @@ const Menu = () => {
  
   const ConsultarApi = async()=>{
     const url =``;
-    const platos = axios.get(url);
-    console.log(platos);
+    const platos = await axios.get("http://localhost:9193/api/plato");
+    updateMenu(platos.data);
   }
   useEffect(()=>{
     ConsultarApi();
@@ -185,7 +184,7 @@ const Menu = () => {
         <h3 className="Titencabezado">Realiza pedidos en Línea</h3>
 
         <div className="Productall col-12 p-5 m-5 row">
-          {DateService.MuestraMenuRes.map((e) => (
+          {menu.map((e) => (
             <Productos
               carrocompra={carrocompra}
               setcarrocompra={setcarrocompra}

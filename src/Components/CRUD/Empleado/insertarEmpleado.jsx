@@ -3,23 +3,20 @@ import styled from "@emotion/styled";
 import axios from 'axios';
 
 const Insertar = () => {
-    const [cliente,updateCliente] = useState({
-        cedula:"",
-        nombre:"",
-        descripcion:"",
-        telefono:"",
-        usuario:"",
-        password:""
+    const [empleado,updateEmpleado] = useState({
+          idempleado:"",
+          nombre: "",
+          descripcion: "",
+          idrestaurante: 1,
+          imagen: "",
     });
     const [error, UpdateError] = useState(false);
-    const {
-        cedula,
+      const {
+        idempleado,
         nombre,
         descripcion,
-        telefono,
-        usuario,
-        password,
-      } = cliente;
+        imagen,
+        } = empleado;
       const Contenedor = styled.legend`
       position: relative;
       z-index: 0;
@@ -47,13 +44,13 @@ const Insertar = () => {
       }
     `;
       const handleChangeUser = (e) => {
-        updateCliente({
-          ...cliente,
+        updateEmpleado({
+          ...empleado,
           [e.target.name]: e.target.value,
         });
       };
-    const insertarCliente = async ()=>{
-        axios.post("http://localhost:9193/api/cliente",cliente).then(res => {
+    const insertarEmpleado = async ()=>{
+        axios.post("http://localhost:9193/api/empleado",empleado).then(res => {
           console.log(res.data)
         })
         .catch(error => {
@@ -63,28 +60,23 @@ const Insertar = () => {
       const SubmitForm = (e) => {
         e.preventDefault();
         if (
-          cedula.trim() === "" ||
+          idempleado.trim()===""||
           nombre.trim() === "" ||
-          telefono.trim() === "" ||
-          descripcion.trim() === "" ||
-          usuario.trim() === "" ||
-          password.trim() === ""
+          imagen.trim() === "" ||
+          descripcion.trim() === "" 
         ) {
             UpdateError(true);
           return;
         }
         UpdateError(false);
         //Insertamos
-        insertarCliente();
-        updateCliente({
-          Nombre: "",
-          Telefono: "",
-          Email: "",
-          Servicio: "",
-          NumPer: "",
-          Fecha: "",
-          Hora: "",
-          Indicaciones: "",
+        insertarEmpleado();
+        updateEmpleado({
+          idempleado:"",
+          nombre: "",
+          descripcion: "",
+          idrestaurante: 1,
+          imagen: "",
         });
       };
     return ( 
@@ -94,28 +86,15 @@ const Insertar = () => {
           Todos lo campos son obligatorios
         </p>
       ) : null}
-        <div className="container getuser">
+        <div className="container getuser mb-5">
           <div className="row">
             <form
               className="col card text-dark bg-transparent mb-5 pt-5 pb-2"
               onSubmit={SubmitForm}
             >
               <fieldset>
-                <Contenedor>Insertar Cliente...</Contenedor>
+                <Contenedor>Insertar Empleado...</Contenedor>
                 <div className="row">
-                  <div className="col-md-4">
-                    <div className="form-group">
-                      <label className="m-4">Cedula</label>
-                      <input
-                        type="number"
-                        className="form-control"
-                        name="cedula"
-                        placeholder="Cedula"
-                        onChange={handleChangeUser}
-                        value={cedula}
-                      />
-                    </div>
-                  </div>
                   <div className="col-md-4">
                     <div className="form-group">
                       <label className="m-4">Nombre</label>
@@ -130,44 +109,32 @@ const Insertar = () => {
                     </div>
                   </div>
                   <div className="col-md-4">
-                    <div className="form-group">
-                      <label className="m-4">Telefono</label>
-                      <input
-                        type="number"
-                        className="form-control"
-                        name="telefono"
-                        placeholder="Telefono"
-                        onChange={handleChangeUser}
-                        value={telefono}
-                      />
-                    </div>
+                  <div className="form-group">
+                    <label className="m-4">Cedula</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      name="idempleado"
+                      placeholder="Cedula"
+                      onChange={handleChangeUser}
+                      value={idempleado}
+                    />
                   </div>
+                </div>
                   <div className="col-md-4">
                     <div className="form-group">
-                      <label className="m-4">Usuario</label>
+                      <label className="m-4">Imagen</label>
                       <input
                         type="text"
                         className="form-control"
-                        name="usuario"
-                        placeholder="Usuario"
+                        name="imagen"
+                        placeholder="URL"
                         onChange={handleChangeUser}
-                        value={usuario}
+                        value={imagen}
                       />
                     </div>
                   </div>
-                  <div className="col-md-4">
-                    <div className="form-group">
-                      <label htmlFor="password" className="m-4">Contraseña</label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        name="passwoed"
-                        placeholder="Contraseña"
-                        onChange={handleChangeUser}
-                        value={password}
-                      />
-                    </div>
-                  </div>
+                
                   <div className="col-md-8">
                     <div className="form-group">
                       <label className="m-4">Descripcion</label>

@@ -62,13 +62,10 @@ const Menu = () => {
   };
  
   const ConsultarApi = async()=>{
-<<<<<<< HEAD
-    const url =``;
-    const platos = await axios.get("http://localhost:9193/api/plato");
-=======
+
     const url =`http://localhost:9193/api/plato`;
     const platos = await axios.get(url);
->>>>>>> upstream/master
+upstream/master
     updateMenu(platos.data);
   }
   useEffect(()=>{

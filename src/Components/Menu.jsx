@@ -65,7 +65,6 @@ const Menu = () => {
 
     const url =`http://localhost:9193/api/plato`;
     const platos = await axios.get(url);
-upstream/master
     updateMenu(platos.data);
   }
   useEffect(()=>{

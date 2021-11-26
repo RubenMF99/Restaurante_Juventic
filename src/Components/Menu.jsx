@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import DateService from "../utils/datos.json";
 import Productos from "./Productos";
 import emailjs from "emailjs-com";
 import swal from "sweetalert";
+import axios from "axios";
 import {
   Button,
   Modal,
@@ -14,6 +15,7 @@ import {
 } from "reactstrap";
 
 const Menu = () => {
+  const [menu,updateMenu] = useState([]);
   const [carrocompra, setcarrocompra] = useState([]);
   const [isOpen, setisOpen] = useState(false);
   const [compra,setcompra] = useState({
@@ -59,6 +61,15 @@ const Menu = () => {
       button: "Cerrar",
     });
   };
+ 
+  const ConsultarApi = async()=>{
+    const url =``;
+    const platos = axios.get(url);
+    console.log(platos);
+  }
+  useEffect(()=>{
+    ConsultarApi();
+  },[]);
 
   return (
     <div className="container">

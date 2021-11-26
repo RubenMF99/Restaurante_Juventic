@@ -10,6 +10,7 @@ import Footer from "./Components/Footer";
 import Inicio from "./Components/Inicio";
 import Login from "./Components/sesion/login";
 import Register from "./Components/sesion/register";
+import Admin from "./Components/CRUD/Administrador"
 import "./App.css";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/nosotros" component={Nosotros} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/admin" component={Admin} />
       </Switch>
       <Footer />
     </Router>

@@ -230,7 +230,9 @@ H1{
        color: #4b65d1;
        margin-bottom: 0;
    }
-   
+.getuser{
+    background-color: #fff;
+}
 .media .nombre span {
        font-size: 12px;
        color: #464646;

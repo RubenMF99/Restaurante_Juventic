@@ -1,7 +1,40 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link } from "react-router-dom";
-
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  FormGroup,
+  Label
+} from "reactstrap";
 const Header = () => {
+  const [error, UpdateError] = useState(false);
+  const [isOpen, setisOpen] = useState(false);
+  const [Sesion, UpdateSesion] = useState({
+    Usuario: "",
+    Password: "",
+  });
+  const { Usuario, Password } = Sesion;
+  const handleChangeLogin = (e) => {
+    UpdateSesion({
+      ...Sesion,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleSubmit = () => {
+    // Validar que no haya campos vacios
+    if (Usuario.trim() === "" || Password.trim() === "") {
+      UpdateError(true);
+      return;
+    }
+    UpdateError(false);
+    UpdateSesion({
+        Usuario: "",
+        Password: "",});
+  };
+
   return (
     <nav className=" j navbar navbar-expand-lg">
       <div className="container">
@@ -47,13 +80,51 @@ const Header = () => {
               <Link to={"/contactenos"} className="nav-link">
                 Contactanos
               </Link>
-              <Link to={"/login"} className="btn btn-danger mr">
+              <Button onClick={() => setisOpen(true)} className="btn btn-danger mr">
                 Ingresar
+              </Button>
+              <Modal isOpen={isOpen}>
+            <ModalHeader>Login</ModalHeader>
+            <ModalBody>
+              <FormGroup>
+              <Label>Usuario</Label>
+                <input
+                      type="text"
+                      className="form-control"
+                      name="Usuario"
+                      placeholder="Tu Usuario"
+                      value={Usuario}
+                      onChange={handleChangeLogin}
+                    />
+                    <Label className="mt-3">Contraseña</Label>
+                <input
+                      type="password"
+                      className="form-control"
+                      name="Password"
+                      placeholder="Contraseña"
+                      value={Password}
+                      onChange={handleChangeLogin}
+                    />
+              </FormGroup>
+              <FormGroup>
+              <Link to={"/register"} onClick={() => setisOpen(false)}  className="nav-link">
+                No tienes Cuenta? Registrate
               </Link>
+              </FormGroup>
+              </ModalBody> 
+              <ModalFooter>
+              <Button className="btn btn-primary" onClick={() => setisOpen(false)}>
+                Cerrar
+              </Button>
+              <Button onClick={handleSubmit} className="btn btn-danger " onClick={() => setisOpen(false)}>
+                Iniciar Sesion
+              </Button>
+                </ModalFooter> 
+              </Modal>
+                      </div>
             </div>
           </div>
         </div>
-      </div>
     </nav>
   );
 };

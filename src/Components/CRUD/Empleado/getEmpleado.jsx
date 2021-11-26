@@ -6,10 +6,12 @@ import {
 } from "reactstrap";
 const ConsultarUser = () => {
     const [user,updateUser] = useState([]);
+    const [estadoeffect, updatestado] = useState(false);
     const ConsultarApi = async()=>{
         const url =`http://localhost:9193/api/empleado`;
         const Listuser = await axios.get(url);
         updateUser(Listuser.data);
+        console.log(Listuser.data);
       }
       const Contenedor = styled.legend`
       position: relative;
@@ -39,26 +41,31 @@ const ConsultarUser = () => {
     `;
       useEffect(()=>{
         ConsultarApi();
-      },[]);
+      },estadoeffect);
       
     const eliminarEmpleado = async (e)=>{
       axios.delete(`http://localhost:9193/api/empleado/${e.idempleado}`).then(res => {
+        updatestado(true);
         console.log(res.data)
       })
       .catch(error => {
         console.log(error.message)
       })
+      updatestado(false);
     }
     return ( 
         
-        <div className="container getuser mb-5">
+        <div className="container  mb-5">
         <div className="row">
-            <fieldset>
               <Contenedor>Lista de Empleados</Contenedor>
-              
+              {user.length === 0 ? (
+                    <p className="text-center blockquote">No hay elementos</p>
+                  ) :(
+                    user.map((e)=>(
+                <div key={e.idempleado}>
                    <table className="table">
                    <thead>  
-                     {user.map((e)=>{
+                   
                          <tr>
                          <th >
                          <p >
@@ -68,6 +75,7 @@ const ConsultarUser = () => {
                        </th>
                        <th >
                          <p
+                    
                          >
                            {" "}
                            {e.nombre}
@@ -96,11 +104,12 @@ const ConsultarUser = () => {
                                 </Button>
                        </th>
                      </tr>
-              })}
-                       
-                   </thead>
+                     </thead>
                  </table>
-            </fieldset>
+                 </div>
+              
+                    ))
+                  )}
         </div>
       </div>
         );

@@ -62,6 +62,7 @@ const Menu = () => {
   };
  
   const ConsultarApi = async()=>{
+
     const url =`http://localhost:9193/api/plato`;
     const platos = await axios.get(url);
     updateMenu(platos.data);

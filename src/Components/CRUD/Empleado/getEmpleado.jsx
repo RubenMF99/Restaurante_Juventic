@@ -7,7 +7,7 @@ import {
 const ConsultarUser = () => {
     const [user,updateUser] = useState([]);
     const ConsultarApi = async()=>{
-        const url =`http://localhost:9193/api/cliente`;
+        const url =`http://localhost:9193/api/empleado`;
         const Listuser = await axios.get(url);
         updateUser(Listuser.data);
       }
@@ -41,8 +41,8 @@ const ConsultarUser = () => {
         ConsultarApi();
       },[]);
       
-    const eliminarCliente = async (e)=>{
-      axios.delete(`http://localhost:9193/api/cliente/${e.cedula}`).then(res => {
+    const eliminarEmpleado = async (e)=>{
+      axios.delete(`http://localhost:9193/api/empleado/${e.idempleado}`).then(res => {
         console.log(res.data)
       })
       .catch(error => {
@@ -51,10 +51,10 @@ const ConsultarUser = () => {
     }
     return ( 
         
-        <div className="container getuser">
+        <div className="container getuser mb-5">
         <div className="row">
             <fieldset>
-              <Contenedor>Lista de usuarios</Contenedor>
+              <Contenedor>Lista de Empleados</Contenedor>
               
                    <table className="table">
                    <thead>  
@@ -63,7 +63,7 @@ const ConsultarUser = () => {
                          <th >
                          <p >
                            {" "}
-                           {e.cedula} 
+                           {e.idempleado} 
                          </p>
                        </th>
                        <th >
@@ -78,20 +78,20 @@ const ConsultarUser = () => {
                          <p
                          >
                            {" "}
-                           {e.usuario}
+                           {e.idrestaurante}
                            <br /> 
                          </p>
                        </th>
                        <th >
-                         <p
-                         >
-                           {" "}
-                           {e.telefono}
-                           <br /> 
-                         </p>
-                       </th>
+                                <img
+                                  src={e.imagen}
+                                  height="70px"
+                                  width="70px"
+                                  className="mr"
+                                ></img>{" "}
+                              </th>
                        <th >
-                       <Button  onClick={() => eliminarCliente(e)}>
+                       <Button  onClick={() => eliminarEmpleado(e)}>
                                   X
                                 </Button>
                        </th>

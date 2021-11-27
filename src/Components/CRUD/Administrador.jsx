@@ -1,7 +1,7 @@
 import React, {useState,Fragment} from 'react';
-import UpdateUser from './User/updateUser';
-import InsertUser from './User/insertarUser';
-import GetUser from './User/getUser';
+import UpdateEmpleado from './Empleado/updateEmpleado';
+import InsertEmpleado from './Empleado/insertarEmpleado';
+import GetEmpleado from './Empleado/getEmpleado';
 
 const Admin = () => {
     const [estado,updateEstado] = useState("");
@@ -20,9 +20,9 @@ const Admin = () => {
             </div>
                 </div>
                 {
-                 estado === "Actualizar"?<UpdateUser/>:
-                 estado === "Insertar"?<InsertUser/>:
-                 estado === "Consultar"?<GetUser/>:null
+                 estado === "Actualizar"?<UpdateEmpleado/>:
+                 estado === "Insertar"?<InsertEmpleado/>:
+                 estado === "Consultar"?<GetEmpleado/>:null
                 }
                  </div>
         </Fragment>

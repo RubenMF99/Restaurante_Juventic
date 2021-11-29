@@ -50,7 +50,7 @@ const Insertar = () => {
         });
       };
     const insertarEmpleado = async ()=>{
-        axios.post("http://localhost:9193/api/empleado",empleado).then(res => {
+      await  axios.post("http://localhost:9193/api/empleado",empleado).then(res => {
           console.log(res.data)
         })
         .catch(error => {

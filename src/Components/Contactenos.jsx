@@ -3,14 +3,16 @@ import emailjs from "emailjs-com";
 import styled from "@emotion/styled";
 import swal from "sweetalert";
 import { Link } from "react-router-dom";
+import axios from "axios";
 const Contactenos = () => {
   const [Error, UpdateError] = useState(false);
   const [Contacto, UpdateContacto] = useState({
+    Idsugerencia:Math.floor(Math.random() * (100000 - 1)) + 1,
     Asunto: "",
-    Nombre: "",
+    Cedula: "",
     Email: "",
     Servicio: "",
-    Comentario: "",
+    Sugerencia: "",
   });
   const Contenedor = styled.legend`
     position: relative;
@@ -37,7 +39,11 @@ const Contactenos = () => {
       transform: rotate(2deg);
     }
   `;
-  const { Asunto, Nombre, Email, Servicio, Comentario } = Contacto;
+  const Agregarsugerencia = async()=>{
+    const url =`http://localhost:9193/api/sugerencia`;
+    await axios.post(url,Contacto);
+  }
+  const { Asunto, Idsugerencia,Cedula, Email, Servicio, Sugerencia } = Contacto;
   const form = useRef();
   const handleChangeSugerencia = (e) => {
     UpdateContacto({
@@ -49,10 +55,10 @@ const Contactenos = () => {
     e.preventDefault();
     if (
       Asunto.trim() === "" ||
-      Nombre.trim() === "" ||
+      Cedula.trim() === "" ||
       Email.trim() === "" ||
       Servicio.trim() === "" ||
-      Comentario.trim() === ""
+      Sugerencia.trim() === ""
     ) {
       UpdateError(true);
       return;
@@ -74,13 +80,15 @@ const Contactenos = () => {
         }
       );
     e.target.reset();
+    Agregarsugerencia();
 
     UpdateContacto({
+      Idsugerencia:Math.floor(Math.random() * (100000 - 1)) + 1,
       Asunto: "",
-      Nombre: "",
+      Cedula: "",
       Email: "",
       Servicio: "",
-      Comentario: "",
+      Sugerencia: "",
     });
   };
 
@@ -113,6 +121,17 @@ const Contactenos = () => {
             <fieldset>
               <Contenedor>Contactanos...</Contenedor>
               <div className="row">
+              <div className="col-md-4">
+                  <div className="form-group">
+                    <label className="m-4">Idreserva</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      name="Idsugerencia"
+                      value={Idsugerencia}
+                    />
+                  </div>
+                </div>
                 <div className="col-md-4">
                   <div className="form-group">
                     <label className="m-4">Asunto</label>
@@ -128,14 +147,14 @@ const Contactenos = () => {
                 </div>
                 <div className="col-md-4">
                   <div className="form-group">
-                    <label className="m-4">Nombre</label>
+                    <label className="m-4">Cedula</label>
                     <input
                       type="text"
                       className="form-control"
-                      name="Nombre"
-                      placeholder="Nombre"
+                      name="Cedula"
+                      placeholder="Identificacion"
                       onChange={handleChangeSugerencia}
-                      value={Nombre}
+                      value={Cedula}
                     />
                   </div>
                 </div>
@@ -183,10 +202,10 @@ const Contactenos = () => {
                     <label className="m-4">Comentario o Sugerencia</label>
                     <textarea
                       onChange={handleChangeSugerencia}
-                      value={Comentario}
+                      value={Sugerencia}
                       className="form-control "
                       placeholder="Ingresa Comentario o sugerencia"
-                      name="Comentario"
+                      name="Sugerencia"
                     ></textarea>
                   </div>
                 </div>

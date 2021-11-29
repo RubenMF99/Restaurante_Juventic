@@ -4,12 +4,12 @@ const CardService = ({ datosRes }) => {
   return (
     <div className="CardMenu1 card col-md-5 m-lg-4">
       <img
-        src={datosRes.url}
+        src={datosRes.imagenser}
         alt="producto"
         className="card-img-top img-responsive center-d-inline-block"
       />
       <div className="card-body">
-        <p className="TitulCard card-text">{datosRes.nombre}</p>
+        <p className="TitulCard card-text">{datosRes.nombreser}</p>
         <p className="card-text">{datosRes.descripcion}</p>
       </div>
       <div className="card-footer">

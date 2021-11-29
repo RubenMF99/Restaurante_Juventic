@@ -1,8 +1,19 @@
-import React from "react";
-import DateService from "../utils/datos.json";
+import React,{useState,useEffect} from "react";
 import CardService from "./CardService";
-
+import axios from "axios";
 const Servicios = () => {
+
+  const [service,updateService] =  useState([]);
+
+  const consultarApi = async ()=>{
+    const url = `http://localhost:9193/api/servicio`;
+    const listService = await axios.get(url);
+    updateService(listService.data);
+    }
+
+    useEffect(() => {
+      consultarApi();
+    }, [])
   return (
     <div className="container">
       <div className="row justify-content-center">
@@ -16,8 +27,8 @@ const Servicios = () => {
           </p>
         </div>
         <div className="col-10 p-5 row">
-          {DateService.ServiciosRes.map((e) => (
-            <CardService datosRes={e} key={e.id} />
+          {service.map((e) => (
+            <CardService datosRes={e} key={e.idservicio} />
           ))}
         </div>
       </div>

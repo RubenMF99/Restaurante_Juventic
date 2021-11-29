@@ -3,18 +3,23 @@ import swal from "sweetalert";
 import emailjs from "emailjs-com";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
+import axios from "axios"
 const Reserva = () => {
   const [Error, UpdateError] = useState(false);
   const [Reserva, UpdateReserva] = useState({
-    Nombre: "",
-    Telefono: "",
+    Idreserva: Math.floor(Math.random() * (10000 - 1)) + 1,
+    Idservicio: "",
+    Cedula: "",
     Email: "",
-    Servicio: "",
     NumPer: "",
     Fecha: "",
     Hora: "",
-    Indicaciones: "",
+    Indicaciones: ""
   });
+  const registrar = async ()=>{
+    const url = `http://localhost:9193/api/reservas`;
+    await axios.post(url,Reserva);
+  }
   const Contenedor = styled.legend`
     position: relative;
     z-index: 0;
@@ -41,14 +46,14 @@ const Reserva = () => {
     }
   `;
   const {
-    Nombre,
-    Telefono,
+    Idreserva,
+    Cedula,
     Email,
-    Servicio,
+    Idservicio,
     NumPer,
     Fecha,
     Hora,
-    Indicaciones,
+    Indicaciones
   } = Reserva;
   const form = useRef();
   const handleChangeReserva = (e) => {
@@ -60,10 +65,9 @@ const Reserva = () => {
   const SubmitForm = (e) => {
     e.preventDefault();
     if (
-      Nombre.trim() === "" ||
-      Telefono.trim() === "" ||
+      Cedula.trim() === "" ||
       Email.trim() === "" ||
-      Servicio.trim() === "" ||
+      Idservicio.trim() === "" ||
       NumPer.trim() === "" ||
       Fecha.trim() === "" ||
       Hora.trim() === "" ||
@@ -88,11 +92,12 @@ const Reserva = () => {
           alert(error.message);
         }
       );
-    e.target.reset();
+    //Enviamos a la base de datos
+    registrar();
     //Limpimos el formulario
     UpdateReserva({
-      Nombre: "",
-      Telefono: "",
+      Idreserva:Math.floor(Math.random() * (10000 - 1)) + 1,
+      Cedula: "",
       Email: "",
       Servicio: "",
       NumPer: "",
@@ -131,29 +136,50 @@ const Reserva = () => {
             <fieldset>
               <Contenedor>Realizar Reserva</Contenedor>
               <div className="row">
-                <div className="col-md-4">
+              <div className="col-md-4">
                   <div className="form-group">
-                    <label className="m-4">Nombre</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="Nombre"
-                      placeholder="Nombre"
-                      onChange={handleChangeReserva}
-                      value={Nombre}
-                    />
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="form-group">
-                    <label className="m-4">Telefono</label>
+                    <label className="m-4">Idreserva</label>
                     <input
                       type="number"
                       className="form-control"
-                      name="Telefono"
-                      placeholder="Telefono"
+                      name="Idreserva"
+                      value={Idreserva}
+                    />
+                  </div>
+                </div>
+              <div className="col-md-4">
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlSelect1" className="m-4">
+                      Seleccione servicio
+                    </label>
+                    <select
+                      className="form-control"
                       onChange={handleChangeReserva}
-                      value={Telefono}
+                      value={Idservicio}
+                      name="Idservicio"
+                    >
+                      <option selected disabled value="">
+                        ....Selecciona...
+                      </option>
+                      <option value="5">Celebracion de cumpleaños</option>
+                      <option value="3">Aniversario</option>
+                      <option value="1">Fiesta infantil</option>
+                      <option value="2">Declaracion o propuesta</option>
+                      <option value="6">Despedida</option>
+                      <option value="4">Cena con amigos</option>
+                    </select>
+                  </div>
+                </div>  
+                <div className="col-md-4">
+                  <div className="form-group">
+                    <label className="m-4">Cedula</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      name="Cedula"
+                      placeholder="Identificacion"
+                      onChange={handleChangeReserva}
+                      value={Cedula}
                     />
                   </div>
                 </div>
@@ -185,29 +211,7 @@ const Reserva = () => {
                     />
                   </div>
                 </div>
-                <div className="col-md-4">
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1" className="m-4">
-                      Seleccione servicio
-                    </label>
-                    <select
-                      className="form-control"
-                      onChange={handleChangeReserva}
-                      value={Servicio}
-                      name="Servicio"
-                    >
-                      <option selected disabled value="">
-                        ....Selecciona...
-                      </option>
-                      <option>Celebracion de cumpleaños</option>
-                      <option>Aniversario</option>
-                      <option>Fiesta infantil</option>
-                      <option>Declaracion o propuesta</option>
-                      <option>Despedida</option>
-                      <option>Cena con amigos</option>
-                    </select>
-                  </div>
-                </div>
+                
                 <div className="col-md-4">
                   <div className="form-group">
                     <label className="m-4">Fecha</label>

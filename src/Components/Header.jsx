@@ -116,9 +116,9 @@ const Header = () => {
               <Button className="btn btn-primary" onClick={() => setisOpen(false)}>
                 Cerrar
               </Button>
-              <Button onClick={handleSubmit} className="btn btn-danger " onClick={() => setisOpen(false)}>
+              <Link to={"/admin"} onClick={handleSubmit} className="btn btn-danger " onClick={() => setisOpen(false)}>
                 Iniciar Sesion
-              </Button>
+              </Link>
                 </ModalFooter> 
               </Modal>
                       </div>

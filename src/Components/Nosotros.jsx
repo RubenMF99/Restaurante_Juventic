@@ -1,15 +1,30 @@
-import React, { Fragment } from "react";
+import React, { Fragment,useState,useEffect } from "react";
 import DateService from "../utils/datos.json";
 import Roles from "./roles";
 import styled from "@emotion/styled";
 import Comentario from "./Comentarios";
+import axios  from "axios";
 const Nosotros = () => {
+
+  const [comentario,updateComentario] = useState([]);
+  const [estadoeffect, updatestado] = useState(true);
   const Contenedor = styled.div`
     background-color: #cbeef3;
     display: flex;
     flex-wrap: wrap;
   `;
 
+  const consultarApi = async()=>{
+    const url =`http://localhost:9193/api/comentario`;
+    const ListCom = await axios.get(url);
+    console.log(ListCom.data);
+    updateComentario(ListCom.data);
+  }
+  useEffect(() => {
+    if(estadoeffect){
+    consultarApi();
+    updatestado(false);}
+  }, [estadoeffect])
   return (
     <Fragment>
       <section className="historia">
@@ -65,8 +80,8 @@ const Nosotros = () => {
                 Comentar
               </button>
             </form>
-            {DateService.ComentariosRes.map((e) => (
-              <Comentario comentariosRes={e} key={e.id} />
+            {comentario.map((e) => (
+              <Comentario comentariosRes={e} key={e.id} updatestado={updatestado} />
             ))}
           </div>
         </div>

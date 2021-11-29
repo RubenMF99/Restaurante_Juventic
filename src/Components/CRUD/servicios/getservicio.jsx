@@ -4,13 +4,14 @@ import axios from 'axios';
 import {
   Button
 } from "reactstrap";
-const ConsultarUser = () => {
-    const [user,updateUser] = useState([]);
+const Getservicio = ()=>{
+
+    const [serviciores,updateServicio] = useState([]);
     const [estadoeffect, updatestado] = useState(true);
     const ConsultarApi = async()=>{
-        const url =`http://localhost:9193/api/empleado`;
+        const url =`http://localhost:9193/api/servicio`;
         const Listuser = await axios.get(url);
-        updateUser(Listuser.data);
+        updateServicio(Listuser.data);
         console.log(Listuser.data);
       }
       const Contenedor = styled.legend`
@@ -47,8 +48,8 @@ const ConsultarUser = () => {
       }
       },[estadoeffect]);
       
-    const eliminarEmpleado = async (e)=>{
-     await axios.delete(`http://localhost:9193/api/empleado/${e.idempleado}`).then(res => {
+    const eliminarServicio = async (e)=>{
+     await axios.delete(`http://localhost:9193/api/servicio/${e.idservicio}`).then(res => {
         updatestado(true);
         console.log(res.data)
       })
@@ -61,39 +62,34 @@ const ConsultarUser = () => {
         
         <div className="container getuser  mb-5">
         <div className="row">
-              <Contenedor>Lista de Empleados</Contenedor>
-              {user.length === 0 ? (
+              <Contenedor>Lista de Servicios</Contenedor>
+              {serviciores.length === 0 ? (
                     <p className="text-center blockquote">No hay elementos</p>
                   ) :(
-                    user.map((e)=>(
-                <div key={e.idempleado}>
+                    serviciores.map((e)=>(
+                <div key={e.idservicio}>
                    <table className="table">
                    <tbody>  
                          <tr>
                          <td >
                            {"Id: "}
-                           {e.idempleado} 
+                           {e.idservicio} 
                        </td>
                        <td >
                            {"Nombre: "}
-                           {e.nombre}
-                       </td>
-                       <td >       
-                           {"Id restaurante: "}
-                           {e.idrestaurante}
-                           
+                           {e.nombreser}
                        </td>
                        <td >
                               {"Foto: "}
                                 <img
-                                  src={e.imagen}
+                                  src={e.imagenser}
                                   height="70px"
                                   width="70px"
                                   className="mr"
                                 ></img>{" "}
                         </td>
                        <td >
-                       <Button className="btn-danger" onClick={() => eliminarEmpleado(e)}>
+                       <Button className="btn-danger" onClick={() => eliminarServicio(e)}>
                                   X
                                 </Button>
                        </td>
@@ -108,5 +104,6 @@ const ConsultarUser = () => {
       </div>
         );
 }
- 
-export default ConsultarUser;
+
+
+export default Getservicio;
